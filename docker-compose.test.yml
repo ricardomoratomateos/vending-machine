@@ -1,0 +1,11 @@
+version: '3'
+services:
+  php:
+    container_name: vending-machine-php_test
+    build:
+        context: .
+        dockerfile: ./docker/php/Dockerfile
+    volumes:
+        - .:/var/www/html:cached
+        - ./docker/conf/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:cached
+        - ./docker/conf/php/php.ini:$PHP_INI_DIR/php.ini:cached
