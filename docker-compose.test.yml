@@ -1,11 +1,25 @@
 version: '3'
 services:
-  php:
-    container_name: vending-machine-php_test
-    build:
-        context: .
-        dockerfile: ./docker/php/Dockerfile
+  phpunit:
+    container_name: vending-machine-php-test
+    image: php:7.4-cli
     volumes:
-        - .:/var/www/html:cached
-        - ./docker/conf/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:cached
-        - ./docker/conf/php/php.ini:$PHP_INI_DIR/php.ini:cached
+      - .:/usr/src/vendingmachine
+    working_dir: /usr/src/vendingmachine
+    entrypoint: vendor/bin/phpunit
+
+  phpcs:
+    container_name: vending-machine-php-test
+    image: php:7.4-cli
+    volumes:
+      - .:/usr/src/vendingmachine
+    working_dir: /usr/src/vendingmachine
+    entrypoint: vendor/bin/phpcs
+
+  phpcbf:
+    container_name: vending-machine-php-test
+    image: php:7.4-cli
+    volumes:
+      - .:/usr/src/vendingmachine
+    working_dir: /usr/src/vendingmachine
+    entrypoint: vendor/bin/phpcbf

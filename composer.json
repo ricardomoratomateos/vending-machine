@@ -24,15 +24,12 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "scripts": {
-        "docker:build": "./scripts/docker.sh docker:build",
-        "docker:run": "./scripts/docker.sh docker:run",
-        "docker:stop": "./scripts/docker.sh docker:stop",
-        "docker:destroy": "./scripts/docker.sh docker:destroy",
+        "run:app": "docker-compose run php",
+        "run:app:interactive": "php ./index.php --interactive",
         "code:style": "./scripts/test.sh code:style",
         "fix:code:style": "./scripts/test.sh fix:code:style",
         "test": "./scripts/test.sh",
         "test:unit": "./scripts/test.sh unit" ,
-        "test:integration": "./scripts/test.sh integration",
-        "test:coverage": "./scripts/test.sh coverage"
+        "test:integration": "./scripts/test.sh integration"
     }
 }
