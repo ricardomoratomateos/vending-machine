@@ -1,6 +1,6 @@
 <?php
 
-namespace TodoAPI\Domain;
+namespace VendingMachine\Domain;
 
 use JsonSerializable;
 use LogicException as GlobalLogicException;
