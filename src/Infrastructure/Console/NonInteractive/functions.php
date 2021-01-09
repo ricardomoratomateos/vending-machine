@@ -39,7 +39,6 @@ function processReturnCoins(ServiceFactory $serviceFactory)
 
         $coinValues = $response->getCoinValues();
         if (empty($coinValues)) {
-            echo "Any coins to return.";
             echo "\n";
             return;
         }
@@ -62,14 +61,18 @@ function processVendItem(ServiceFactory $serviceFactory, $value)
         /** @var VendItemResponse */
         $response = $service($request);
 
+        $item = $response->getItem();
+        $item = (explode('-', $item))[1];
+        $item = strtoupper($item);
+
         $coinValues = $response->getChange();
         if (empty($coinValues)) {
-            echo "Any change to return.";
+            echo $item;
             echo "\n";
             return;
         }
 
-        echo implode(', ', $coinValues) . ', ' . $response->getItem();
+        echo "$item, " . implode(', ', $coinValues);
         echo "\n";
     } catch (LogicException $exception) {
         echo $exception::MESSAGE;

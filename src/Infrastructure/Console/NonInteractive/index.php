@@ -13,10 +13,6 @@ preg_match($pattern, $argv[1], $matches);
 
 $actions = $matches[1];
 
-echo "Actions to process: ";
-echo $actions;
-echo "\n";
-
 $actions = explode(',', $actions);
 foreach ($actions as $action) {
     switch ($action) {
@@ -43,5 +39,5 @@ foreach ($actions as $action) {
 }
 
 echo "\n";
-echo "Thank you!\n";
+echo "THANKS!\n";
 exit;
