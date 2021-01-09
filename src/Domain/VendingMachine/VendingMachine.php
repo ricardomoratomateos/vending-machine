@@ -104,21 +104,36 @@ class VendingMachine
     {
         $valueOfInsertedCoins = $this->transformInsertedCoinsToFloat();
         $valueToReturn = $valueOfInsertedCoins - $price->getValue();
+
         if ($valueToReturn == 0) {
             return true;
         }
-
-        foreach ($this->change as $coin) {
-            if (round($valueToReturn, 2) === 0.00) {
-                break;
-            }
-
-            if ($coin->getValue() <= $valueToReturn) {
-                $valueToReturn -= $coin->getValue();
-            }
+        if (empty($this->change)) {
+            return false;
         }
 
-        return round($valueToReturn, 2) === 0.00;
+        $changeCopy = $this->change;
+        while ($valueToReturn > 0.00) {
+            $coinToReturnIndex = array_keys($changeCopy)[0];
+            $coinToReturn = $changeCopy[$coinToReturnIndex];
+            for ($i = 1; $i < count($changeCopy); $i++) {
+                if (
+                    isset($changeCopy[$i]) &&
+                    $changeCopy[$i]->getValue() <= $valueToReturn &&
+                    $changeCopy[$i]->getValue() > $coinToReturn->getValue()
+                ) {
+                    $coinToReturnIndex = $i;
+                    $coinToReturn = $changeCopy[$i];
+                }
+            }
+
+            $coinsToReturn[] = $coinToReturn;
+            $valueToReturn -= $coinToReturn->getValue();
+            $valueToReturn = round($valueToReturn, 2);
+            unset($changeCopy[$coinToReturnIndex]);
+        }
+
+        return $valueToReturn === 0.00;
     }
 
     private function calculateChange(Price $price): array
@@ -127,18 +142,27 @@ class VendingMachine
 
         $coinsToReturn = [];
         $valueToReturn = $valueOfInsertedCoins - $price->getValue();
-        foreach ($this->change as $i => $coin) {
-            if ($valueToReturn === 0) {
-                break;
+
+        while ($valueToReturn > 0.00) {
+            $coinToReturnIndex = array_keys($this->change)[0];
+            $coinToReturn = $this->change[$coinToReturnIndex];
+
+            for ($i = 1; $i < count($this->change); $i++) {
+                if (
+                    isset($this->change[$i]) &&
+                    $this->change[$i]->getValue() <= $valueToReturn &&
+                    $this->change[$i]->getValue() > $coinToReturn->getValue()
+                ) {
+                    $coinToReturnIndex = $i;
+                    $coinToReturn = $this->change[$i];
+                }
             }
 
-            if ($coin->getValue() <= $valueToReturn) {
-                $coinsToReturn[] = $coin;
-                $valueToReturn -= $coin->getValue();
-                unset($this->change[$i]);
-            }
+            $coinsToReturn[] = $coinToReturn;
+            $valueToReturn -= $coinToReturn->getValue();
+            $valueToReturn = round($valueToReturn, 2);
+            unset($this->change[$coinToReturnIndex]);
         }
-
 
         return $coinsToReturn;
     }
