@@ -37,7 +37,6 @@ class InMemoryVendingMachineRepository implements VendingMachineRepositoryInterf
             }
         }
 
-
         $this->vendingMachine = new VendingMachine(
             [
                 new VendingMachineProduct(new Juice(), 10, new Price(1.00)),
