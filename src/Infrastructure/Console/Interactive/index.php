@@ -9,7 +9,7 @@ $serviceFactory = new ServiceFactory(new InMemoryVendingMachineRepository());
 
 $endVending = true;
 while ($endVending) {
-    echo "Type an action (insert-coin, get, return-coin): ";
+    echo "Type an action (insert-coin, get, return-coins, end): ";
     $handle = fopen("php://stdin", "r");
     $line = fgets($handle);
 
