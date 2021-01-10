@@ -54,4 +54,22 @@ $ composer tests:integrations # For run integration:tests
 * Add SERVICE command
 * Add coverage command
 
-# Explanations <WIP>
+# Explanations
+* I've choosen a DDD approach for solve the problem.
+* Also, I've used a clean architecture for organize the code.
+* All the code follows the SOLID standards.
+* I think that is not necessary to persist the vending machine into a database and I've saved it in memory.
+* I've done a console script.
+* You can see anothers projects in my github. For example, I have a TODO API here (using Dockers, Nginx, PHP and MySQL).
+    * https://github.com/ricardomoratomateos/todo-api
+* I'm not been able to set the "interactive mode" into a docker because it was getting stuck.
+
+# Code explanation
+
+# Another approachs
+* A vending machine is a typically problem that can be resolved with a state machine. I'll put some resources about how to do it but searching a bit in the web there are hundred of entries about solve this problem.
+    * https://medium.com/swlh/vending-machine-design-a-state-design-pattern-approach-5b7e1a026cd2
+    * https://www.researchgate.net/publication/276136463_Design_of_Vending_Machine_using_Finite_State_Machine_and_Visual_Automata_Simulator
+    * https://aircconline.com/vlsics/V3N2/3212vlsics02.pdf
+
+In the case of that pattern be choosen for develop something like this, I'd search a bit and I'd choose a machine state that fit with the problem.
