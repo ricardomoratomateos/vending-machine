@@ -163,6 +163,8 @@ class VendingMachine
             $valueToReturn = round($valueToReturn, 2);
             unset($this->change[$coinToReturnIndex]);
         }
+        
+        $this->insertedCoins = [];
 
         return $coinsToReturn;
     }
