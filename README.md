@@ -61,8 +61,8 @@ $ composer tests:integrations # For run integration:tests
     * https://github.com/ricardomoratomateos/todo-api
 * There are a few things to do (you can see in the "TODO" section).
 * I've done two modes: interactive and no interactive:
-    * The interactive mode launch questions and wait for your answer
-    * The no interactive mode needs a list of actions
+    * The interactive mode launch questions and wait for your answer.
+    * The no interactive mode needs a list of actions.
 * I'm not been able to set the "interactive mode" into a docker because it was getting stuck.
 * Because the interactive mode needs to be executed outside the docker, we need to have installed the composer dependencies outside the docker. Also needs to have instaled in the computer the PHP client and composer.
 
