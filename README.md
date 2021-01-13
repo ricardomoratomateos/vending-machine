@@ -36,7 +36,7 @@ $ composer run:app -- --actions=0.10,0.10,RETURN-COINS
 -> 0.10, 0.10
 
 # Example 3: Buy Water without exact change
-$ composer run:app -- --actions=1.00,0.25,0.25,GET-WATER
+$ composer run:app -- --actions=1.00,GET-WATER
 -> WATER, 0.25, 0.10
 
 # Example 4: A lot of actions
