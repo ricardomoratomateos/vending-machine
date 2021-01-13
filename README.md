@@ -74,14 +74,6 @@ $ composer tests:integrations # For run integration:tests
     * Two scripts for execute the code.
 * The InMemoryRepository file contains the initializated vending machine. If you want to modify the params of it, you need to change this file.
 
-## Another approachs
-* A vending machine is a typically problem that can be resolved with a state machine. I'll put some resources about how to do it but searching a bit in the web there are hundred of entries about solve this problem.
-    * https://medium.com/swlh/vending-machine-design-a-state-design-pattern-approach-5b7e1a026cd2
-    * https://www.researchgate.net/publication/276136463_Design_of_Vending_Machine_using_Finite_State_Machine_and_Visual_Automata_Simulator
-    * https://aircconline.com/vlsics/V3N2/3212vlsics02.pdf
-
-In the case of that pattern be choosen for develop something like this, I'd search a bit and I'd choose a machine state that fit with the problem.
-
 ## TODO
 * Remove interactive mode and install composer dependencies inside the docker.
 * Add SERVICE command.
